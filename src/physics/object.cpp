@@ -16,7 +16,9 @@ bool activatedPlatformer(EnhancedGameObject* object, bool isPlatformer) {
     return false;
 }
 
+#ifdef GEODE_IS_WINDOWS
 void* hasBeenActivatedByPlayerOrig = nullptr;
+#endif
 
 $execute {
 #ifdef GEODE_IS_WINDOWS

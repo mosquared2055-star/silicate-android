@@ -321,8 +321,10 @@ void bumpPlayerFromGJBGL(GJBaseGameLayer* pl, PlayerObject* player,
 //     return ret;
 // }
 
+#ifdef GEODE_IS_WINDOWS
 static void* g_PlayerObject_getOrientedBox = nullptr;
 static void* g_PlayerObject_updateOrientedBox = nullptr;
+#endif
 
 $execute {
 #ifdef GEODE_IS_WINDOWS
