@@ -58,7 +58,9 @@ class Bot {
 
     BotUpdater& updater();
     BotScheduler& scheduler();
+#ifdef GEODE_IS_WINDOWS
     UIManager& ui();
+#endif
     ReplaySystem& replaySystem();
     PracticeFix& practiceFix();
     TrajectoryManager& trajectory();

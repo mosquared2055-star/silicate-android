@@ -26,7 +26,9 @@ class Bot::Impl {
     BotUpdater m_updater;
     BotScheduler m_scheduler;
 
+#ifdef GEODE_IS_WINDOWS
     UIManager m_ui;
+#endif
 
     ReplaySystem m_replaySystem;
 
@@ -46,7 +48,9 @@ class Bot::Impl {
 
 BOT_GETTER(BotScheduler, scheduler)
 BOT_GETTER(BotUpdater, updater)
+#ifdef GEODE_IS_WINDOWS
 BOT_GETTER(UIManager, ui)
+#endif
 BOT_GETTER(ReplaySystem, replaySystem)
 BOT_GETTER(PracticeFix, practiceFix)
 BOT_GETTER(TrajectoryManager, trajectory)
@@ -109,7 +113,9 @@ void Bot::initialize() {
         if (std::filesystem::exists(presetPath)) {
             geode::log::info("Loading preset {}", settings.lastLoadedPreset);
             Renderer::get()->loadSettings(presetPath);
+#ifdef GEODE_IS_WINDOWS
             Bot::get()->ui().m_state.m_presetName = settings.lastLoadedPreset;
+#endif
         } else {
             geode::log::error("Preset {} does not exist",
                               settings.lastLoadedPreset);

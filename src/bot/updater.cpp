@@ -493,10 +493,12 @@ void BotUpdater::findBestFrameCandidate() {
 constexpr int ACTIONMGR_UPDATE_OFFSET = 0x38B90;
 static void* CCActionManager_update;
 
+#ifdef GEODE_IS_WINDOWS
 $execute {
     CCActionManager_update = reinterpret_cast<void*>(geode::base::getCocos() +
                                                      ACTIONMGR_UPDATE_OFFSET);
 }
+#endif
 
 #ifdef GEODE_IS_WINDOWS
 static void earlyUpdateMidhook(SafetyHookContext&) {
@@ -668,8 +670,8 @@ static void restorePhysDtHook(SafetyHookContext& ctx) {
 }
 #endif
 
-$execute {
 #ifdef GEODE_IS_WINDOWS
+$execute {
     util::midhook(geode::base::get() + 0x237A7C, "physDt", physDtMidhook);
     util::midhook(geode::base::get() + 0x237DCE, "physStepCount",
                   physStepCountMidhook);
@@ -722,3 +724,4 @@ $execute {
     Bot::get()->updater().m_predictBestPath->handle(
         [](bool&) { Bot::get()->updater().findBestFrameCandidate(); });
 }
+#endif
