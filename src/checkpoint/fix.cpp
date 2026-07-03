@@ -45,7 +45,7 @@ SavedCheckpoint PracticeFix::createCheckpoint(CheckpointObject* obj,
         return checkpoint;
     }
 
-    return SavedCheckpoint{};
+    return SavedCheckpoint();
 }
 
 void PracticeFix::applyCheckpoint(SavedCheckpoint& cp) {
