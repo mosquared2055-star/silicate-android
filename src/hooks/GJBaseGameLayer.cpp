@@ -29,6 +29,7 @@ using namespace geode::prelude;
 #include <Geode/modify/GJBaseGameLayer.hpp>
 
 $execute {
+#ifdef GEODE_IS_WINDOWS
     // Patch GJBaseGameLayer::resetLevelVariables to not release buttons
     geode::log::info("Patching {} (GJBaseGameLayer::resetLevelVariables)",
                      base::get() + 0x23B4EA);
@@ -56,6 +57,7 @@ $execute {
                            {0x90, 0x90, 0x90, 0x90, 0x90})) {
         geode::log::error("Failed to patch PlayLayer::resumeAndRestart");
     }
+#endif
 }
 
 struct SLGJBaseGameLayer : Modify<SLGJBaseGameLayer, GJBaseGameLayer> {
