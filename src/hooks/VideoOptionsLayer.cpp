@@ -18,8 +18,8 @@ struct SLVideoOptionsLayer : Modify<SLVideoOptionsLayer, VideoOptionsLayer> {
     void onApply(cocos2d::CCObject* sender) {
         VideoOptionsLayer::onApply(sender);
 
-        auto size = CCDirector::get()->getWinSizeInPixels();
 #ifdef GEODE_IS_WINDOWS
+        auto size = CCDirector::get()->getWinSizeInPixels();
         ImGuiHookCtx::get().handleResize(size.width, size.height);
 #endif
     }
