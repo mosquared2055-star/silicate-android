@@ -692,8 +692,13 @@ struct SLPlayLayer : Modify<SLPlayLayer, PlayLayer> {
         auto bot = Bot::get();
         if (!bot->replaySystem().m_autosaveAtLevelEnd->inner()) return;
 
+#ifdef GEODE_IS_WINDOWS
         auto path = Mod::get()->getPersistentDir() / "replays" /
                     (bot->ui().m_state.m_replayName + ".slc");
+#else
+        auto path = Mod::get()->getPersistentDir() / "replays" /
+                    ("replay.slc");
+#endif
         if (std::filesystem::exists(path)) {
             bot->replaySystem().createBackup();
         } else {

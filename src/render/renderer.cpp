@@ -1,3 +1,4 @@
+#ifdef GEODE_IS_WINDOWS
 #include "renderer.hpp"
 
 #ifdef GEODE_IS_WINDOWS
@@ -828,3 +829,4 @@ void Renderer::update(PlayLayer* pl) {
 
     this->capture();
 }
+#endif

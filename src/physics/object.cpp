@@ -1,5 +1,6 @@
 #include "object.hpp"
 
+#pragma clang diagnostic ignored "-Wdollar-in-identifier-extension"
 #include <Geode/Geode.hpp>
 
 namespace phys {
