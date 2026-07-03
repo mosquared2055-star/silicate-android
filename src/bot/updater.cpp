@@ -670,8 +670,8 @@ static void restorePhysDtHook(SafetyHookContext& ctx) {
 }
 #endif
 
-#ifdef GEODE_IS_WINDOWS
 $execute {
+#ifdef GEODE_IS_WINDOWS
     util::midhook(geode::base::get() + 0x237A7C, "physDt", physDtMidhook);
     util::midhook(geode::base::get() + 0x237DCE, "physStepCount",
                   physStepCountMidhook);
@@ -724,4 +724,3 @@ $execute {
     Bot::get()->updater().m_predictBestPath->handle(
         [](bool&) { Bot::get()->updater().findBestFrameCandidate(); });
 }
-#endif

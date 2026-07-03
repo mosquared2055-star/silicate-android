@@ -7,6 +7,8 @@ using namespace geode::prelude;
 
 #include <Geode/modify/CCActionManager.hpp>
 
+#ifdef GEODE_IS_WINDOWS
+
 constexpr int ACTIONMGR_UPDATE_OFFSET = 0x38B90;
 static void* _CCActionManager_update_orig;
 
@@ -37,3 +39,5 @@ $execute {
                            &CCActionManager_update, "CCActionManager::update",
                            tulip::hook::TulipConvention::Fastcall);
 }
+
+#endif
