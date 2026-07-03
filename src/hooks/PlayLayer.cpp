@@ -61,6 +61,10 @@ struct SLPlayLayer : Modify<SLPlayLayer, PlayLayer> {
             obj, Bot::get()->updater().m_frameOnLastAttempt);
     }
 
+    void callOriginalLoadFromCheckpoint(CheckpointObject* cp) {
+        PlayLayer::loadFromCheckpoint(cp);
+    }
+
     void loadFromCheckpoint(CheckpointObject* obj) {
         if (!Bot::get()->isEnabled()) {
             return PlayLayer::loadFromCheckpoint(obj);
@@ -77,7 +81,7 @@ struct SLPlayLayer : Modify<SLPlayLayer, PlayLayer> {
         // Backwards step
         if (pf.m_loadCheckpoint) {
             pf.restorePreviousFrame(
-                [this](auto* cp) { this->PlayLayer::loadFromCheckpoint(cp); });
+                [this](auto* cp) { this->callOriginalLoadFromCheckpoint(cp); });
 
             // Restored - shouldn't be dead anymore
             pf.m_hasDiedNormally = false;
