@@ -173,6 +173,7 @@ inline bool loadFFmpegFunctions(void* ff) {
 
     return true;
 #else
+    (void)ff;
     return false;
 #endif
 }

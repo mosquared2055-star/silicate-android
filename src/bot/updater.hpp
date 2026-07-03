@@ -1,7 +1,9 @@
 #ifndef UPDATER_HPP
 #define UPDATER_HPP
 
+#ifdef GEODE_IS_WINDOWS
 #include <Windows.h>
+#endif
 
 #include <forward_list>
 #include <functional>
