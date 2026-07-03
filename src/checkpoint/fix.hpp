@@ -55,7 +55,7 @@ class PracticeFix {
     void removeAll();
     void clearPlatformer(bool assumeLoaded = false);
 
-    void updatePlatformerInputs(std::vector<PlayerButtonCommand>& inputs);
+    void updatePlatformerInputs(gd::vector<PlayerButtonCommand>& inputs);
     void registerBrokenObject(GameObject* obj) {
         m_brokenObjects.push_back(obj);
     }
