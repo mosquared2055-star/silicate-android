@@ -246,14 +246,14 @@ public:
     void queueStart() {}
     void startIfQueued() {}
     geode::Result<> start() { return geode::Err("unsupported"); }
-    geode::Result<> encode(uint8_t* data, size_t size) { return geode::Err("unsupported"); }
+    geode::Result<> encode(uint8_t*, size_t) { return geode::Err("unsupported"); }
     geode::Result<> write() { return geode::Err("unsupported"); }
-    geode::Result<> writeAudio(std::vector<float>& data, uint64_t pts) { return geode::Err("unsupported"); }
+    geode::Result<> writeAudio(std::vector<float>&, uint64_t) { return geode::Err("unsupported"); }
     geode::Result<> stop() { return geode::Err("unsupported"); }
     void signalStop() {}
     void recordLoop() {}
     void capture() {}
-    void update(PlayLayer* pl) {}
+    void update(PlayLayer*) {}
     void displayPreview() {}
     RendererSettings m_settings;
     static Renderer* get() { static Renderer r; return &r; }
@@ -261,8 +261,8 @@ public:
     bool isRecording() const { return false; }
     float getTime() const { return 0.f; }
     bool isFFmpegLoaded() const { return false; }
-    void loadSettings(std::filesystem::path& path) {}
-    void saveSettings(std::filesystem::path& path) const {}
+    void loadSettings(std::filesystem::path&) {}
+    void saveSettings(std::filesystem::path&) const {}
     void initializeDefaults() {}
     void loadFFmpeg() {}
     bool m_shouldStart = false;
