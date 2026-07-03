@@ -276,7 +276,7 @@ struct SavedCheckpoint {
     double m_tps;
 
     // Additional GJEffectManager state
-    std::unordered_map<int, int> m_persistentItemMap;
+    gd::unordered_map<int, int> m_persistentItemMap;
     std::array<float, 2000> m_varianceValues;
 
     std::vector<GameObject*> m_calcNonEffectObjects;

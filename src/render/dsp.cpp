@@ -75,7 +75,11 @@ void AudioRecorder::haltWithData(float* data, unsigned int length) {
 
 void AudioRecorder::init() {
     FMOD_DSP_DESCRIPTION desc = {};
+#ifdef GEODE_IS_WINDOWS
     strcpy_s(desc.name, "silly dsp");
+#else
+    strncpy(desc.name, "silly dsp", sizeof(desc.name));
+#endif
     desc.version = 0x00020000;
     desc.numinputbuffers = 1;
     desc.numoutputbuffers = 1;
