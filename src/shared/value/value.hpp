@@ -72,47 +72,59 @@ class SLBindingManager {
             {
                 auto kb = RawKeybind{
                     70, 0, "ui.visible", KeybindType::Toggle, true, "1"};
-                this->registerKeybind(
-                    m_values["ui.visible"]->createKeybind(kb));
+                if (m_values.count("ui.visible")) {
+                    this->registerKeybind(
+                        m_values["ui.visible"]->createKeybind(kb));
+                }
             }
 
             {
                 auto kb = RawKeybind{
                     86,   0,  "updater.frame_advance", KeybindType::Toggle,
                     true, "1"};
-                this->registerKeybind(
-                    m_values["updater.frame_advance"]->createKeybind(kb));
+                if (m_values.count("updater.frame_advance")) {
+                    this->registerKeybind(
+                        m_values["updater.frame_advance"]->createKeybind(kb));
+                }
             }
 
             {
                 auto kb = RawKeybind{
                     66,   0,  "updater.advance_back", KeybindType::Toggle,
                     true, "1"};
-                this->registerKeybind(
-                    m_values["updater.advance_back"]->createKeybind(kb));
+                if (m_values.count("updater.advance_back")) {
+                    this->registerKeybind(
+                        m_values["updater.advance_back"]->createKeybind(kb));
+                }
             }
 
             {
                 auto kb = RawKeybind{
                     67,   0,  "updater.advance_one", KeybindType::Toggle,
                     true, "1"};
-                this->registerKeybind(
-                    m_values["updater.advance_one"]->createKeybind(kb));
+                if (m_values.count("updater.advance_one")) {
+                    this->registerKeybind(
+                        m_values["updater.advance_one"]->createKeybind(kb));
+                }
             }
 
             {
                 auto kb = RawKeybind{
                     84,   0,  "trajectory.enabled", KeybindType::Toggle,
                     true, "1"};
-                this->registerKeybind(
-                    m_values["trajectory.enabled"]->createKeybind(kb));
+                if (m_values.count("trajectory.enabled")) {
+                    this->registerKeybind(
+                        m_values["trajectory.enabled"]->createKeybind(kb));
+                }
             }
 
             {
                 auto kb = RawKeybind{
                     18, 1, "ui.visible", KeybindType::Toggle, true, "1"};
-                this->registerKeybind(
-                    m_values["ui.visible"]->createKeybind(kb));
+                if (m_values.count("ui.visible")) {
+                    this->registerKeybind(
+                        m_values["ui.visible"]->createKeybind(kb));
+                }
             }
 
             return;
