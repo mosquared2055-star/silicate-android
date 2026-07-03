@@ -267,6 +267,8 @@ public:
     void loadFFmpeg() {}
     bool m_shouldStart = false;
     bool m_collectAudio = true;
+    bool m_recording = false;
+    bool m_halting = false;
 };
 
 #endif
