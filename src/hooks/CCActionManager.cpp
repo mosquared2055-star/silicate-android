@@ -40,4 +40,22 @@ $execute {
                            tulip::hook::TulipConvention::Fastcall);
 }
 
+#else
+
+struct SLCCActionManager : Modify<SLCCActionManager, CCActionManager> {
+    void update(float dt) override {
+        Bot::get()->updater().m_actionMgr = this;
+        if (!Bot::get()->isEnabled()) {
+            CCActionManager::update(dt);
+            return;
+        }
+        // Don't trigger CCActionManager::update if running frozen updates
+        if (Bot::get()->updater().m_onlyRefresh) {
+            return;
+        }
+
+        CCActionManager::update(dt);
+    }
+};
+
 #endif
