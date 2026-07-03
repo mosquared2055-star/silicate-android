@@ -19,8 +19,10 @@ bool activatedPlatformer(EnhancedGameObject* object, bool isPlatformer) {
 void* hasBeenActivatedByPlayerOrig = nullptr;
 
 $execute {
+#ifdef GEODE_IS_WINDOWS
     hasBeenActivatedByPlayerOrig =
         reinterpret_cast<void*>(geode::base::get() + 0x1a1b70);
+#endif
 }
 
 // this doesn't work in trajectory for some odd reason

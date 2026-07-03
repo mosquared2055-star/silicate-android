@@ -49,8 +49,16 @@ void ReplaySystem::onReset(uint32_t newFrame) {
     return std::nullopt;
 }
 
+#ifndef GEODE_IS_WINDOWS
+static uint64_t g_dummyRandomState = 0;
+#endif
+
 uint64_t& ReplaySystem::getCurrentRandomState() {
+#ifdef GEODE_IS_WINDOWS
     return *reinterpret_cast<uint64_t*>(geode::base::get() + 0x6c2e90);
+#else
+    return g_dummyRandomState;
+#endif
 }
 
 uint64_t& ReplaySystem::getCurrentShakeState() {

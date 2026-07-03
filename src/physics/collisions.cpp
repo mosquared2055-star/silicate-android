@@ -325,10 +325,12 @@ static void* g_PlayerObject_getOrientedBox = nullptr;
 static void* g_PlayerObject_updateOrientedBox = nullptr;
 
 $execute {
+#ifdef GEODE_IS_WINDOWS
     g_PlayerObject_getOrientedBox =
         reinterpret_cast<void*>(geode::base::get() + 0x38a8c0);
     g_PlayerObject_updateOrientedBox =
         reinterpret_cast<void*>(geode::base::get() + 0x19e5f0);
+#endif
 }
 
 void collisionCheckObjects(GJBaseGameLayer* pl, PlayerObject* player,
