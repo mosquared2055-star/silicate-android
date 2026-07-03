@@ -5,7 +5,6 @@
 #include <Geode/modify/PlayLayer.hpp>
 
 // #include "colorspace/nv12.hpp"
-#include "colorspace/yuv420p.hpp"
 // #include "colorspace/rgb0.hpp"
 // #include "colorspace/rgb24.hpp"
 
@@ -16,6 +15,7 @@
 using namespace cocos2d;
 
 #ifdef GEODE_IS_WINDOWS
+#include "colorspace/yuv420p.hpp"
 
 static void silentChangeSize(CCSize size, float /* wOffset */,
                              float /* hOffset */) {
@@ -232,8 +232,8 @@ void RenderTexture::destroy() {
     glBindFramebuffer(GL_FRAMEBUFFER, m_old_fbo);
 }
 #else
-void RenderTexture::init(std::unique_ptr<Colorspace> colorspace) {}
-bool RenderTexture::capture(uint8_t** data) { return false; }
+void RenderTexture::init(std::unique_ptr<Colorspace>) {}
+bool RenderTexture::capture(uint8_t**) { return false; }
 void RenderTexture::displayPreview() {}
 void RenderTexture::destroy() {}
 #endif
