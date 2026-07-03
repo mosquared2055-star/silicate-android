@@ -15,6 +15,8 @@
 
 using namespace cocos2d;
 
+#ifdef GEODE_IS_WINDOWS
+
 static void silentChangeSize(CCSize size, float /* wOffset */,
                              float /* hOffset */) {
     auto director = CCDirector::sharedDirector();
@@ -229,3 +231,9 @@ void RenderTexture::destroy() {
 
     glBindFramebuffer(GL_FRAMEBUFFER, m_old_fbo);
 }
+#else
+void RenderTexture::init(std::unique_ptr<Colorspace> colorspace) {}
+bool RenderTexture::capture(uint8_t** data) { return false; }
+void RenderTexture::displayPreview() {}
+void RenderTexture::destroy() {}
+#endif
