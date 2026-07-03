@@ -16,6 +16,6 @@ struct SLCCScheduler : Modify<SLCCScheduler, CCScheduler> {
         }
 
         bot->updater().runUpdates(
-            [this](float dt) { this->CCScheduler::update(dt); }, dt, false);
+            [this](float dt) { CCScheduler::update(dt); }, dt, false);
     }
 };

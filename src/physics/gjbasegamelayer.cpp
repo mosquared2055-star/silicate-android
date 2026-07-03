@@ -67,8 +67,12 @@ float redirectPlayerForce(PlayerObject* player, float force,
 void teleportPlayer(GJBaseGameLayer* pl, TeleportPortalObject* object,
                     PlayerObject* player) {
     if (!player) {
+#ifdef GEODE_IS_WINDOWS
         player = reinterpret_cast<PlayerObject*>(
             reinterpret_cast<uintptr_t>(pl->m_varianceValues.data()) + 0xe5);
+#else
+        return; // Android does not support this hack
+#endif
     }
     player->m_wasTeleported = true;
 
